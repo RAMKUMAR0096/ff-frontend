@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FIBSO FIBER SOLUTIONS Design System - Fiber optic inspired theme */
+
+@layer base {
+  :root {
+    /* Vibrant Fiber Optic Theme Colors */
+    --background: 240 10% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary: Electric Cyan Blue */
+    --primary: 195 100% 50%;
+    --primary-foreground: 240 10% 6%;
+    --primary-glow: 195 100% 60%;
+
+    /* Secondary: Deep Purple */
+    --secondary: 270 50% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted: Dark fiber gray */
+    --muted: 240 5% 20%;
+    --muted-foreground: 240 5% 70%;
+
+    /* Accent: Vibrant Purple */
+    --accent: 280 100% 60%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Vibrant Fiber Optic Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(195, 100%, 50%), hsl(280, 100%, 60%));
+    --gradient-secondary: linear-gradient(135deg, hsl(270, 50%, 15%), hsl(240, 10%, 20%));
+    --gradient-hero: linear-gradient(135deg, hsl(195, 100%, 50%) 0%, hsl(280, 100%, 60%) 50%, hsl(320, 100%, 50%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(280, 100%, 60%), hsl(320, 100%, 50%));
+    
+    /* Enhanced Glow Effects */
+    --glow-primary: 0 0 40px hsl(195, 100%, 50%, 0.4);
+    --glow-accent: 0 0 30px hsl(280, 100%, 60%, 0.3);
+    --glow-pink: 0 0 25px hsl(320, 100%, 50%, 0.3);
+    
+    /* Animation Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Vibrant Fiber Optic Button Variants */
+  .btn-fiber {
+    @apply bg-gradient-to-r from-primary via-accent to-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold;
+    @apply shadow-lg hover:shadow-xl;
+    @apply transition-all duration-300;
+    @apply hover:scale-105 hover:shadow-[var(--glow-primary)] relative overflow-hidden;
+  }
+
+  .btn-fiber:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-fiber:hover:before {
+    left: 100%;
+  }
+
+  .btn-fiber-outline {
+    @apply border-2 border-primary text-primary bg-transparent px-6 py-3 rounded-lg font-semibold;
+    @apply hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-primary-foreground;
+    @apply transition-all duration-300 hover:shadow-[var(--glow-primary)];
+  }
+
+  /* Enhanced Glow Effects */
+  .fiber-glow {
+    @apply shadow-[var(--glow-primary)] animate-fiber-pulse;
+  }
+
+  .fiber-glow-accent {
+    @apply shadow-[var(--glow-accent)];
+  }
+
+  .fiber-glow-pink {
+    @apply shadow-[var(--glow-pink)];
+  }
+
+  /* Gradient Backgrounds */
+  .bg-fiber-gradient {
+    background: var(--gradient-primary);
+  }
+
+  .bg-fiber-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-fiber-accent {
+    background: var(--gradient-accent);
+  }
+
+  /* Animation Classes */
+  .animate-fiber-pulse {
+    animation: fiber-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+}
+
+@keyframes fiber-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: var(--glow-primary);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+    box-shadow: var(--glow-accent);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rainbow-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
