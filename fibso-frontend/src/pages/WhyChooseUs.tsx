@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/ScrollToTop ';
 import { Shield, Zap, Users, Award, Clock, Wrench, Globe, TrendingUp } from 'lucide-react';
 
 const WhyChooseUs = () => {
@@ -142,6 +143,7 @@ const WhyChooseUs = () => {
 
   return (
     <div className="min-h-screen py-8">
+      <ScrollToTop/>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <section className="text-center mb-16">

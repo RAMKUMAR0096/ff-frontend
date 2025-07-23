@@ -6,52 +6,54 @@
 
 @layer base {
   :root {
-    /* Vibrant Fiber Optic Theme Colors */
-    --background: 240 10% 6%;
-    --foreground: 0 0% 98%;
+    /* Modern Vibrant Tech Theme - Bright and Colorful */
+    --background: 210 20% 98%;
+    --foreground: 220 39% 11%;
 
-    --card: 240 10% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 39% 11%;
 
-    --popover: 240 10% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 39% 11%;
 
-    /* Primary: Electric Cyan Blue */
-    --primary: 195 100% 50%;
-    --primary-foreground: 240 10% 6%;
-    --primary-glow: 195 100% 60%;
+    /* Primary: Electric Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 217 91% 75%;
 
-    /* Secondary: Deep Purple */
-    --secondary: 270 50% 15%;
+    /* Secondary: Vibrant Green */
+    --secondary: 142 76% 36%;
     --secondary-foreground: 0 0% 98%;
 
-    /* Muted: Dark fiber gray */
-    --muted: 240 5% 20%;
-    --muted-foreground: 240 5% 70%;
+    /* Muted: Light Gray */
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 16% 47%;
 
-    /* Accent: Vibrant Purple */
-    --accent: 280 100% 60%;
+    /* Accent: Orange */
+    --accent: 25 95% 53%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
-    --ring: 195 100% 50%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
-    /* Vibrant Fiber Optic Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(195, 100%, 50%), hsl(280, 100%, 60%));
-    --gradient-secondary: linear-gradient(135deg, hsl(270, 50%, 15%), hsl(240, 10%, 20%));
-    --gradient-hero: linear-gradient(135deg, hsl(195, 100%, 50%) 0%, hsl(280, 100%, 60%) 50%, hsl(320, 100%, 50%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(280, 100%, 60%), hsl(320, 100%, 50%));
+    /* Modern Tech Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(142, 76%, 36%));
+    --gradient-secondary: linear-gradient(135deg, hsl(142, 76%, 36%), hsl(25, 95%, 53%));
+    --gradient-hero: linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(142, 76%, 36%) 35%, hsl(25, 95%, 53%) 70%, hsl(271, 91%, 65%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(25, 95%, 53%), hsl(271, 91%, 65%));
+    --gradient-rainbow: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(142, 76%, 36%), hsl(25, 95%, 53%), hsl(271, 91%, 65%), hsl(339, 82%, 52%));
     
-    /* Enhanced Glow Effects */
-    --glow-primary: 0 0 40px hsl(195, 100%, 50%, 0.4);
-    --glow-accent: 0 0 30px hsl(280, 100%, 60%, 0.3);
-    --glow-pink: 0 0 25px hsl(320, 100%, 50%, 0.3);
+    /* Modern Tech Glow Effects */
+    --glow-primary: 0 0 40px hsl(217, 91%, 60%, 0.4);
+    --glow-accent: 0 0 35px hsl(25, 95%, 53%, 0.4);
+    --glow-secondary: 0 0 30px hsl(142, 76%, 36%, 0.3);
+    --glow-rainbow: 0 0 50px hsl(217, 91%, 60%, 0.3), 0 0 100px hsl(25, 95%, 53%, 0.2);
     
     /* Animation Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -225,4 +227,14 @@
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* Additional utility classes */
+.animate-rainbow-flow {
+  background-size: 300% 300%;
+  animation: rainbow-flow 4s ease-in-out infinite;
+}
+
+.bg-rainbow {
+  background: var(--gradient-rainbow);
 }

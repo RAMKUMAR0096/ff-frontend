@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Eye, EyeOff, Lock, Mail, User } from 'lucide-react';
+import { Eye, EyeOff, Lock, Mail, User, Shield } from 'lucide-react';
+import ScrollToTop from '@/components/ScrollToTop ';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -11,6 +12,7 @@ const Login = () => {
     email: '',
     password: '',
     confirmPassword: '',
+    role: 'user',
     rememberMe: false
   });
 
@@ -36,6 +38,7 @@ const Login = () => {
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
+      role: formData.role || 'user',
       loginTime: new Date().toISOString()
     };
     localStorage.setItem('fibso_user', JSON.stringify(userData));
@@ -49,12 +52,14 @@ const Login = () => {
       email: '',
       password: '',
       confirmPassword: '',
+      role: 'user',
       rememberMe: false
     });
   };
 
   return (
     <div className="min-h-screen py-8">
+      <ScrollToTop/>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-md mx-auto">
           {/* Header */}
@@ -117,6 +122,27 @@ const Login = () => {
                         placeholder="Doe"
                       />
                     </div>
+                  </div>
+                </div>
+              )}
+
+              {!isLogin && (
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Role
+                  </label>
+                  <div className="relative">
+                    <Shield className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+                    <select
+                      name="role"
+                      value={formData.role}
+                      onChange={(e) => setFormData(prev => ({ ...prev, role: e.target.value }))}
+                      required={!isLogin}
+                      className="w-full pl-10 pr-4 py-3 border border-input rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                    >
+                      <option value="user">User</option>
+                      <option value="admin">Admin</option>
+                    </select>
                   </div>
                 </div>
               )}

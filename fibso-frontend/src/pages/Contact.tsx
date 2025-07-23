@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import ScrollToTop from '@/components/ScrollToTop ';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -64,6 +65,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen py-8">
+      <ScrollToTop/>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <section className="text-center mb-16">

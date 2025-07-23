@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/ScrollToTop ';
 import { Users, Target, Award, Clock } from 'lucide-react';
 
 const About = () => {
@@ -61,7 +62,9 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen py-8">
+    <>
+    <ScrollToTop/>
+      <div className="min-h-screen py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <section className="text-center mb-16">
@@ -214,6 +217,7 @@ const About = () => {
         </section>
       </div>
     </div>
+    </>
   );
 };
 

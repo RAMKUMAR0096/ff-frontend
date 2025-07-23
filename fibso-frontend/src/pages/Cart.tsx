@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft } from 'lucide-react';
+import ScrollToTop from '@/components/ScrollToTop ';
 
 interface CartItem {
   id: number;
@@ -50,6 +51,7 @@ const Cart = () => {
   if (cartItems.length === 0) {
     return (
       <div className="min-h-screen py-8">
+        <ScrollToTop/>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center py-16">
             <ShoppingBag className="w-24 h-24 text-muted-foreground mx-auto mb-6" />

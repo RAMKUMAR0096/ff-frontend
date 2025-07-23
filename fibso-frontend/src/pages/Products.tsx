@@ -1,11 +1,20 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Search, Filter, Star, ShoppingCart } from 'lucide-react';
 import heroImage from '../assets/hero-fiber.jpg';
+import ScrollToTop from '@/components/ScrollToTop ';
 
 const Products = () => {
+  const [searchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+
+  useEffect(() => {
+    const categoryParam = searchParams.get('category');
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [searchParams]);
 
   const categories = [
     { id: 'all', name: 'All Products' },
@@ -86,6 +95,7 @@ const Products = () => {
 
   return (
     <div className="min-h-screen py-8">
+      <ScrollToTop/>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">

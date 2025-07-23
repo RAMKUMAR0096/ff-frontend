@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Star, ShoppingCart, Heart, Share2, Truck, Shield, RotateCcw } from 'lucide-react';
+import ScrollToTop from '@/components/ScrollToTop ';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -70,6 +71,7 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen py-8">
+      <ScrollToTop/>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-8">
