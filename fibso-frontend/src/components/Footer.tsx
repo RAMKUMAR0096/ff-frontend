@@ -1,105 +1,94 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <motion.footer
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      className="bg-card border-t border-border text-foreground relative overflow-hidden"
+    >
+      {/* Optional background glow animation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0.3, 0.6, 0.3] }}
+        transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+        className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+      />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
-          <div className="space-y-4">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-fiber-gradient rounded-lg flex items-center justify-center fiber-glow">
-                <div className="w-6 h-6 bg-primary-foreground rounded-full opacity-90"></div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="space-y-5"
+          >
+            <Link to="/" className="flex items-center space-x-3 hover:scale-105 transition-transform duration-300">
+              <div className="w-12 h-12 bg-fiber-gradient rounded-lg flex items-center justify-center fiber-glow">
+                <div className="w-7 h-7 bg-primary-foreground rounded-full opacity-90"></div>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold text-primary">FIBSO</span>
+                <span className="text-2xl font-bold text-primary tracking-wide">FIBSO</span>
                 <span className="text-xs text-muted-foreground -mt-1">FIBER SOLUTIONS</span>
               </div>
             </Link>
-            <p className="text-muted-foreground text-sm">
-              Leading provider of high-quality fiber optic solutions for businesses and telecommunications. 
-              Connecting the world with reliable, fast, and secure fiber infrastructure.
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              We deliver high-quality fiber optic solutions for businesses and telecommunications.
+              Connecting the world with fast, reliable, and secure networks.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-smooth">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-smooth">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-smooth">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-smooth">
-                <Instagram className="w-5 h-5" />
-              </a>
+            <div className="flex space-x-4 mt-4">
+              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
+                <motion.a
+                  key={index}
+                  href="#"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-muted-foreground hover:text-primary transition-all duration-300"
+                >
+                  <Icon className="w-5 h-5" />
+                </motion.a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-muted-foreground hover:text-primary transition-smooth">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/products" className="text-muted-foreground hover:text-primary transition-smooth">
-                  Products
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-muted-foreground hover:text-primary transition-smooth">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/why-choose-us" className="text-muted-foreground hover:text-primary transition-smooth">
-                  Why Choose Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-primary transition-smooth">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Products */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Products</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/products" className="text-muted-foreground hover:text-primary transition-smooth">
-                  Fiber Optic Cables
-                </Link>
-              </li>
-              <li>
-                <Link to="/products" className="text-muted-foreground hover:text-primary transition-smooth">
-                  Network Equipment
-                </Link>
-              </li>
-              <li>
-                <Link to="/products" className="text-muted-foreground hover:text-primary transition-smooth">
-                  Installation Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/products" className="text-muted-foreground hover:text-primary transition-smooth">
-                  Maintenance & Support
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Other Columns (Quick Links, Products, Contact) */}
+          {[['Quick Links', ['Home', 'Products', 'About Us', 'Why Choose Us', 'Contact']],
+            ['Products', ['Fiber Optic Cables', 'Network Equipment', 'Installation Services', 'Maintenance & Support']]
+          ].map(([title, items], idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + idx * 0.2, duration: 0.6 }}
+            >
+              <h3 className="text-lg font-semibold text-foreground mb-4">{title}</h3>
+              <ul className="space-y-3 text-sm">
+                {items.map((item: string, i: number) => (
+                  <li key={i}>
+                    <Link
+                      to="/"
+                      className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
 
           {/* Contact Info */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Contact Info</h3>
-            <div className="space-y-3">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
+            <h3 className="text-lg font-semibold text-foreground mb-4">Contact Info</h3>
+            <div className="space-y-4 text-sm">
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary" />
                 <span className="text-muted-foreground">+1 (555) 123-4567</span>
@@ -110,35 +99,38 @@ const Footer = () => {
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5" />
-                <span className="text-muted-foreground">
-                  123 Fiber Optic Drive<br />
-                  Tech Valley, CA 94043
+                <span className="text-muted-foreground leading-relaxed">
+                  123 Fiber Optic Drive<br />Tech Valley, CA 94043
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="border-t border-border mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-muted-foreground text-sm">
-              © 2024 FIBSO Fiber Solutions. All rights reserved.
-            </p>
+        {/* Bottom Bar */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="border-t border-border mt-10 pt-6"
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
+            <p>© 2024 FIBSO Fiber Solutions. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link to="#" className="text-muted-foreground hover:text-primary text-sm transition-smooth">
-                Privacy Policy
-              </Link>
-              <Link to="#" className="text-muted-foreground hover:text-primary text-sm transition-smooth">
-                Terms of Service
-              </Link>
-              <Link to="#" className="text-muted-foreground hover:text-primary text-sm transition-smooth">
-                Cookie Policy
-              </Link>
+              {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item, i) => (
+                <Link
+                  key={i}
+                  to="#"
+                  className="hover:text-primary transition-colors duration-300"
+                >
+                  {item}
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 
