@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  FiUsers, 
-  FiShoppingCart, 
-  FiPackage, 
-  FiTrendingUp, 
-  FiSettings, 
+import {
+  FiUsers,
+  FiShoppingCart,
+  FiPackage,
+  FiTrendingUp,
+  FiSettings,
   FiLogOut,
   FiMessageSquare,
   FiBarChart,
@@ -25,12 +25,17 @@ import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts';
 import ScrollToTop from '@/components/ScrollToTop ';
+import { Button } from 'react-day-picker';
+import UploadProduct from '@/components/UploadProduct';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loginForm, setLoginForm] = useState({ username: '', otp: '' });
   const [activeSection, setActiveSection] = useState('overview');
+  const [showUploadForm, setShowUploadForm] = useState(false);
+  const [customProducts, setCustomProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const user = localStorage.getItem('fibso_user');
@@ -39,6 +44,13 @@ const AdminDashboard = () => {
       if (userData.role === 'admin') {
         setIsAuthenticated(true);
       }
+    }
+  }, []);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('products');
+    if (stored) {
+      setProducts(JSON.parse(stored));
     }
   }, []);
 
@@ -63,6 +75,12 @@ const AdminDashboard = () => {
     localStorage.removeItem('fibso_user');
     setIsAuthenticated(false);
     navigate('/');
+  };
+
+  const handleUpload = (newProduct) => {
+    const newId = Date.now(); // or any unique ID logic
+    setCustomProducts(prev => [...prev, { id: newId, ...newProduct }]);
+    setShowUploadForm(false); // Hide form after upload
   };
 
   // Sample Data
@@ -97,8 +115,8 @@ const AdminDashboard = () => {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-primary via-accent to-secondary flex items-center justify-center p-4">
-        <ScrollToTop/>
-        <motion.div 
+        <ScrollToTop />
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="bg-card/95 backdrop-blur-lg p-8 rounded-2xl shadow-2xl border border-border max-w-md w-full"
@@ -148,7 +166,7 @@ const AdminDashboard = () => {
               Login to Dashboard
             </motion.button>
           </form>
-          
+
           <div className="mt-6 p-4 bg-muted rounded-lg">
             <p className="text-sm text-muted-foreground text-center">
               Demo credentials:<br />
@@ -182,7 +200,7 @@ const AdminDashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-background via-muted to-card">
       <div className="flex">
         {/* Sidebar */}
-        <motion.div 
+        <motion.div
           initial={{ x: -250 }}
           animate={{ x: 0 }}
           className="w-64 bg-card/95 backdrop-blur-lg border-r border-border min-h-screen p-4"
@@ -198,11 +216,10 @@ const AdminDashboard = () => {
                 key={item.id}
                 whileHover={{ x: 4 }}
                 onClick={() => setActiveSection(item.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${
-                  activeSection === item.id 
-                    ? 'bg-primary text-primary-foreground' 
-                    : 'hover:bg-muted text-foreground'
-                }`}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${activeSection === item.id
+                  ? 'bg-primary text-primary-foreground'
+                  : 'hover:bg-muted text-foreground'
+                  }`}
               >
                 <item.icon className="text-lg" />
                 {item.label}
@@ -223,7 +240,7 @@ const AdminDashboard = () => {
         {/* Main Content */}
         <div className="flex-1 p-6">
           {/* Header */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
@@ -297,11 +314,10 @@ const AdminDashboard = () => {
                         </div>
                         <div className="flex items-center gap-4">
                           <span className="font-bold text-foreground">{quote.amount}</span>
-                          <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                            quote.status === 'approved' ? 'bg-green-100 text-green-800' :
+                          <span className={`px-3 py-1 rounded-full text-xs font-medium ${quote.status === 'approved' ? 'bg-green-100 text-green-800' :
                             quote.status === 'rejected' ? 'bg-red-100 text-red-800' :
-                            'bg-yellow-100 text-yellow-800'
-                          }`}>
+                              'bg-yellow-100 text-yellow-800'
+                            }`}>
                             {quote.status}
                           </span>
                           <div className="flex gap-2">
@@ -418,7 +434,7 @@ const AdminDashboard = () => {
                         </div>
                       </div>
                     </motion.button>
-                    
+
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       className="w-full p-4 text-left border border-border rounded-lg hover:bg-muted"
@@ -431,7 +447,7 @@ const AdminDashboard = () => {
                         </div>
                       </div>
                     </motion.button>
-                    
+
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       className="w-full p-4 text-left border border-border rounded-lg hover:bg-muted"
@@ -465,7 +481,7 @@ const AdminDashboard = () => {
                         </div>
                       </div>
                     </motion.button>
-                    
+
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       className="w-full p-4 text-left border border-border rounded-lg hover:bg-muted"
@@ -478,7 +494,7 @@ const AdminDashboard = () => {
                         </div>
                       </div>
                     </motion.button>
-                    
+
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       className="w-full p-4 text-left border border-border rounded-lg hover:bg-muted"
@@ -497,18 +513,59 @@ const AdminDashboard = () => {
             </motion.div>
           )}
 
-          {/* Other sections can be added similarly */}
           {activeSection === 'products' && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-20"
-            >
-              <FiPackage className="text-6xl text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-foreground mb-2">Product Management</h3>
-              <p className="text-muted-foreground">This section is under development</p>
-            </motion.div>
+            <div className="relative">
+              {/* Upload Button aligned to the right */}
+              <div className="flex justify-end px-4 pt-4">
+                <button
+                  onClick={() => setShowUploadForm(prev => !prev)}
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                >
+                  {showUploadForm ? 'Cancel Upload' : 'Upload Product'}
+                </button>
+              </div>
+
+              {/* Upload Form or Placeholder */}
+              <div className="px-4 pt-8">
+                {showUploadForm ? (
+                  <div className="flex justify-center">
+                    <UploadProduct onUpload={handleUpload} />
+                  </div>
+                ) : products.length > 0 ? (
+                  <div className='w-full max-h-[400px] overflow-y-scroll p-4'>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {products.map((product, index) => (
+                        <div key={index} className="bg-white rounded shadow p-4">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-48 object-cover rounded mb-4"
+                          />
+                          <h3 className="text-lg font-semibold mb-1">{product.name}</h3>
+                          <p className="text-sm text-gray-500 mb-2">{product.category}</p>
+                          <p className="text-sm text-gray-700 text-ellipsis line-clamp-1">{product.description}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                  </div>
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-center py-20"
+                  >
+                    <ScrollToTop />
+                    <FiPackage className="text-6xl text-muted-foreground mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Product Management</h3>
+                    <p className="text-muted-foreground">No products uploaded yet.</p>
+                  </motion.div>
+                )}
+              </div>
+            </div>
           )}
+
+
 
           {activeSection === 'orders' && (
             <motion.div

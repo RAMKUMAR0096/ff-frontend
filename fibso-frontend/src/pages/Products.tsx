@@ -29,7 +29,7 @@ const Products = () => {
       id: 1,
       name: 'Single-Mode Fiber Cable',
       category: 'cables',
-      price: 299.99,
+      // price: 299.99,
       rating: 4.8,
       reviews: 142,
       image: heroImage,
@@ -175,7 +175,7 @@ const Products = () => {
 
                 {/* Price and Action */}
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-primary">${product.price}</span>
+                  {/* <span className="text-2xl font-bold text-primary">${product.price}</span> */}
                   <Link 
                     to={`/product/${product.id}`}
                     className="btn-fiber text-sm px-4 py-2"

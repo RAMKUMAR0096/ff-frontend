@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Star, ShoppingCart, Heart, Share2, Truck, Shield, RotateCcw } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop ';
+import { toast } from 'sonner';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -12,8 +13,8 @@ const ProductDetail = () => {
   const product = {
     id: 1,
     name: 'Single-Mode Fiber Cable',
-    price: 299.99,
-    originalPrice: 349.99,
+    // price: 299.99,
+    // originalPrice: 349.99,
     rating: 4.8,
     reviews: 142,
     inStock: true,
@@ -59,13 +60,14 @@ const ProductDetail = () => {
       existingCart.push({
         id: Number(id),
         name: product.name,
-        price: product.price,
+        // price: product.price,
         quantity,
         image: product.images[0]
       });
     }
     
     localStorage.setItem('fibso_cart', JSON.stringify(existingCart));
+    toast.success("product added to the cart.")
     console.log(`Added ${quantity} of product ${id} to cart`);
   };
 
@@ -137,7 +139,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Price */}
-              <div className="flex items-center space-x-3 mb-4">
+              {/* <div className="flex items-center space-x-3 mb-4">
                 <span className="text-3xl font-bold text-primary">${product.price}</span>
                 {product.originalPrice && (
                   <span className="text-xl text-muted-foreground line-through">${product.originalPrice}</span>
@@ -147,7 +149,7 @@ const ProductDetail = () => {
                     Save ${(product.originalPrice - product.price).toFixed(2)}
                   </span>
                 )}
-              </div>
+              </div> */}
 
               {/* Stock Status */}
               <div className="mb-6">
@@ -278,7 +280,7 @@ const ProductDetail = () => {
                 </div>
                 <div className="p-4">
                   <h3 className="font-semibold text-foreground mb-2">{relatedProduct.name}</h3>
-                  <span className="text-xl font-bold text-primary">${relatedProduct.price}</span>
+                  {/* <span className="text-xl font-bold text-primary">${relatedProduct.price}</span> */}
                 </div>
               </Link>
             ))}

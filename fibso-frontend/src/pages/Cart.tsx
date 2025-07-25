@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop ';
+import { toast } from 'sonner';
 
 interface CartItem {
   id: number;
@@ -41,6 +42,7 @@ const Cart = () => {
 
   const removeItem = (id: number) => {
     setCartItems(items => items.filter(item => item.id !== id));
+    toast.success("removed item from the cart");
   };
 
   const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
