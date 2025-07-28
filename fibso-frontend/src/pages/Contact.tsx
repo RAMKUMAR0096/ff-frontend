@@ -64,7 +64,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-8 bg bg-gradient-to-r from-sky-300 via-emerald-200 to-violet-300 p-6 rounded-lg text-slate-900 shadow-md">
       <ScrollToTop/>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}

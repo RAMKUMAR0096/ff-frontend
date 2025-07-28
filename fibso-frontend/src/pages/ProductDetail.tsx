@@ -72,7 +72,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-8  bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 text-slate-800">
       <ScrollToTop/>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
@@ -220,7 +220,7 @@ const ProductDetail = () => {
             </div>
 
             {/* Benefits */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-border">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-border">
               <div className="flex items-center space-x-3">
                 <Truck className="w-6 h-6 text-primary" />
                 <div>
@@ -242,7 +242,7 @@ const ProductDetail = () => {
                   <div className="text-xs text-muted-foreground">Easy returns</div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 

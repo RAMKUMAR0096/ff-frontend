@@ -8,7 +8,7 @@ const Footer = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="bg-card border-t border-border text-foreground relative overflow-hidden"
+      className="bg-orange-100 border-t border-border text-foreground relative overflow-hidden"
     >
       {/* Optional background glow animation */}
       <motion.div
@@ -67,7 +67,7 @@ const Footer = () => {
             >
               <h3 className="text-lg font-semibold text-foreground mb-4">{title}</h3>
               <ul className="space-y-3 text-sm">
-                {items.map((item: string, i: number) => (
+                {items?.map((item: string, i: number) => (
                   <li key={i}>
                     <Link
                       to="/"

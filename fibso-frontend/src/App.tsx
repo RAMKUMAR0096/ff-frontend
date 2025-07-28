@@ -38,7 +38,7 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/0096" element={<AdminDashboard />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

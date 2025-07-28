@@ -27,6 +27,8 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import ScrollToTop from '@/components/ScrollToTop ';
 import { Button } from 'react-day-picker';
 import UploadProduct from '@/components/UploadProduct';
+import QuotationEditor from '@/components/QuotationEditor';
+import displayINRCurrency from '@/helper/displayINRCurrency';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -36,6 +38,9 @@ const AdminDashboard = () => {
   const [showUploadForm, setShowUploadForm] = useState(false);
   const [customProducts, setCustomProducts] = useState([]);
   const [products, setProducts] = useState([]);
+  const [quatation, setQuatation] = useState([]);
+  const [openQuatationEditor, setOpenQuatationEditor] = useState(false);
+
 
   useEffect(() => {
     const user = localStorage.getItem('fibso_user');
@@ -53,6 +58,12 @@ const AdminDashboard = () => {
       setProducts(JSON.parse(stored));
     }
   }, []);
+  useEffect(() => {
+    const cartItems = localStorage.getItem('fibso_quotation')
+    if (cartItems) {
+      setQuatation(JSON.parse(cartItems))
+    }
+  }, [])
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -106,11 +117,11 @@ const AdminDashboard = () => {
     { id: 3, customer: 'Network Systems Inc', product: 'Networking Tool Kit', amount: '$850', status: 'rejected', date: '2024-01-13' }
   ];
 
-  const customerResponses = [
-    { id: 1, customer: 'John Smith', message: 'Great service! Quick delivery.', rating: 5, date: '2024-01-15' },
-    { id: 2, customer: 'Sarah Johnson', message: 'Product quality exceeded expectations.', rating: 5, date: '2024-01-14' },
-    { id: 3, customer: 'Mike Wilson', message: 'Had issues with installation guide.', rating: 3, date: '2024-01-13' }
-  ];
+  // const customerResponses = [
+  //   { id: 1, customer: 'John Smith', message: 'Great service! Quick delivery.', rating: 5, date: '2024-01-15' },
+  //   { id: 2, customer: 'Sarah Johnson', message: 'Product quality exceeded expectations.', rating: 5, date: '2024-01-14' },
+  //   { id: 3, customer: 'Mike Wilson', message: 'Had issues with installation guide.', rating: 3, date: '2024-01-13' }
+  // ];
 
   if (!isAuthenticated) {
     return (
@@ -191,9 +202,9 @@ const AdminDashboard = () => {
     { id: 'products', label: 'Products', icon: FiPackage },
     { id: 'orders', label: 'Orders', icon: FiShoppingCart },
     { id: 'quotations', label: 'Quotations', icon: FiFileText },
-    { id: 'customers', label: 'Customer Responses', icon: FiMessageSquare },
-    { id: 'analytics', label: 'Analytics', icon: FiBarChart },
-    { id: 'settings', label: 'Website Settings', icon: FiSettings }
+    // { id: 'customers', label: 'Customer Responses', icon: FiMessageSquare },
+    // { id: 'analytics', label: 'Analytics', icon: FiBarChart },
+    // { id: 'settings', label: 'Website Settings', icon: FiSettings }
   ];
 
   return (
@@ -301,24 +312,27 @@ const AdminDashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {recentQuotations.map((quote) => (
+                    {quatation.map((quote) => (
                       <motion.div
                         key={quote.id}
                         whileHover={{ scale: 1.01 }}
                         className="flex items-center justify-between p-4 border border-border rounded-lg"
                       >
+                        <div className='w-20 h-full mr-5'>
+                          <img src={quote?.image} alt='imageofproduct' />
+                        </div>
                         <div className="flex-1">
-                          <h4 className="font-medium text-foreground">{quote.customer}</h4>
-                          <p className="text-sm text-muted-foreground">{quote.product}</p>
-                          <p className="text-xs text-muted-foreground">{quote.date}</p>
+                          <h4 className="font-medium text-foreground">{quote?.customer || "customer name"}</h4>
+                          <p className="text-sm text-muted-foreground">{quote?.name}</p>
+                          <p className="text-xs text-muted-foreground">Quantity : {quote?.quantity}</p>
                         </div>
                         <div className="flex items-center gap-4">
-                          <span className="font-bold text-foreground">{quote.amount}</span>
-                          <span className={`px-3 py-1 rounded-full text-xs font-medium ${quote.status === 'approved' ? 'bg-green-100 text-green-800' :
+                          <span className="font-bold text-foreground">{displayINRCurrency(quote?.sellingPrice) || ""}</span>
+                          <span className={`px-3 py-1 rounded-full text-xs font-medium ${quote?.status === 'approved' ? 'bg-green-100 text-green-800' :
                             quote.status === 'rejected' ? 'bg-red-100 text-red-800' :
                               'bg-yellow-100 text-yellow-800'
                             }`}>
-                            {quote.status}
+                            {quote?.status}
                           </span>
                           <div className="flex gap-2">
                             <motion.button
@@ -337,7 +351,14 @@ const AdminDashboard = () => {
                               whileHover={{ scale: 1.1 }}
                               className="p-2 text-blue-600 hover:bg-blue-100 rounded"
                             >
-                              <FiEdit />
+                              <button onClick={() => setOpenQuatationEditor(prev => !prev)}>
+                                <FiEdit />
+                              </button>
+                              {
+                                openQuatationEditor && (
+                                  <QuotationEditor items={quatation} onClose={() => setOpenQuatationEditor(prev => !prev)} />
+                                )
+                              }
                             </motion.button>
                           </div>
                         </div>
@@ -350,7 +371,7 @@ const AdminDashboard = () => {
           )}
 
           {/* Customer Responses Section */}
-          {activeSection === 'customers' && (
+          {/* {activeSection === 'customers' && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -406,10 +427,10 @@ const AdminDashboard = () => {
                 </CardContent>
               </Card>
             </motion.div>
-          )}
+          )} */}
 
           {/* Website Settings Section */}
-          {activeSection === 'settings' && (
+          {/* {activeSection === 'settings' && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -511,7 +532,7 @@ const AdminDashboard = () => {
                 </Card>
               </div>
             </motion.div>
-          )}
+          )} */}
 
           {activeSection === 'products' && (
             <div className="relative">
@@ -519,7 +540,7 @@ const AdminDashboard = () => {
               <div className="flex justify-end px-4 pt-4">
                 <button
                   onClick={() => setShowUploadForm(prev => !prev)}
-                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                  className="btn-fiber text-white px-4 py-2 rounded hover:btn-fiber transition"
                 >
                   {showUploadForm ? 'Cancel Upload' : 'Upload Product'}
                 </button>

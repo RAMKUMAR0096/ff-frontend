@@ -187,7 +187,7 @@ const Home = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-20 bg-gradient-to-br from-background via-card to-secondary/10">
+      <section className="py-20 bg-pink-100 from-background via-card to-secondary/10">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -389,7 +389,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-rainbow relative overflow-hidden">
+      <section className="py-20 bg-green-100 relative overflow-hidden">
         <motion.div
           animate={{ 
             backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]

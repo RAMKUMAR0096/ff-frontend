@@ -94,7 +94,7 @@ const Products = () => {
   });
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-8 bg-teal-50">
       <ScrollToTop/>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -106,7 +106,7 @@ const Products = () => {
         </div>
 
         {/* Search and Filter */}
-        <div className="bg-card rounded-lg p-6 shadow-lg mb-8">
+        <div className="bg-teal-100 rounded-lg p-6 shadow-lg mb-8">
           <div className="flex flex-col md:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">

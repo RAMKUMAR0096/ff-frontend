@@ -64,7 +64,7 @@ const About = () => {
   return (
     <>
     <ScrollToTop/>
-      <div className="min-h-screen py-8">
+      <div className="min-h-screen py-8 bg-teal-100/45">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <section className="text-center mb-16">

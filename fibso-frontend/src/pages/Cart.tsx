@@ -45,6 +45,18 @@ const Cart = () => {
     toast.success("removed item from the cart");
   };
 
+  const handleProceedToCheckout = () => {
+    // Move current cart items to quotation storage
+    localStorage.setItem('fibso_quotation', JSON.stringify(cartItems));
+
+    // Clear the cart
+    setCartItems([]);
+    localStorage.removeItem('fibso_cart');
+
+    toast.success("Moved items to quotation successfully!");
+  };
+
+
   const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const shipping = subtotal > 500 ? 0 : 50; // Free shipping over $500
   const tax = subtotal * 0.08; // 8% tax
@@ -53,7 +65,7 @@ const Cart = () => {
   if (cartItems.length === 0) {
     return (
       <div className="min-h-screen py-8">
-        <ScrollToTop/>
+        <ScrollToTop />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center py-16">
             <ShoppingBag className="w-24 h-24 text-muted-foreground mx-auto mb-6" />
@@ -139,7 +151,7 @@ const Cart = () => {
           <div className="lg:col-span-1">
             <div className="bg-card rounded-xl p-6 shadow-lg sticky top-8">
               <h2 className="text-xl font-bold text-foreground mb-4">Order Summary</h2>
-              
+
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Subtotal</span>
@@ -168,7 +180,7 @@ const Cart = () => {
                 </div>
               </div>
 
-              <button className="btn-fiber w-full mb-4">
+              <button className="btn-fiber w-full mb-4" onClick={handleProceedToCheckout}>
                 Proceed to Checkout
               </button>
 
