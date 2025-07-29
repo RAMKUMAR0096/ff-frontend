@@ -15,7 +15,7 @@
 
     --popover: 0 0% 100%;
     --popover-foreground: 220 39% 11%;
-* Primary: Modern Sky Blue - Main brand color */
+/* Primary: Modern Sky Blue - Main brand color */
     --primary: 204 100% 60%;              /* Bright sky blue #0ea5e9 */
     --primary-foreground: 0 0% 100%;      /* Pure white for contrast */
     --primary-hover: 204 100% 55%;        /* Darker on hover */

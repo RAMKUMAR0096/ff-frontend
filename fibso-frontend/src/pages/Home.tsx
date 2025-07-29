@@ -133,7 +133,7 @@ const Home = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroColorful})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/60 via-accent/50 to-secondary/60" />
+        <div className="" />
         
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
@@ -145,7 +145,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-5xl md:text-7xl font-bold mb-6 text-white"
           >
             FIBSO FIBER
             <span className="block text-transparent bg-clip-text bg-gradient-rainbow animate-rainbow-flow">
