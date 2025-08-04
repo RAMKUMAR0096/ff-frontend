@@ -25,32 +25,7 @@ const About = () => {
     }
   ];
 
-  const team = [
-    {
-      name: 'John Anderson',
-      role: 'CEO & Founder',
-      image: '/api/placeholder/300/300',
-      bio: '20+ years in telecommunications and fiber optic technology.'
-    },
-    {
-      name: 'Sarah Mitchell',
-      role: 'CTO',
-      image: '/api/placeholder/300/300',
-      bio: 'Leading our technical innovation and product development.'
-    },
-    {
-      name: 'Michael Chen',
-      role: 'VP of Operations',
-      image: '/api/placeholder/300/300',
-      bio: 'Ensuring seamless delivery and customer satisfaction.'
-    },
-    {
-      name: 'Emily Rodriguez',
-      role: 'Head of Engineering',
-      image: '/api/placeholder/300/300',
-      bio: 'Driving excellence in installation and technical services.'
-    }
-  ];
+  
 
   const milestones = [
     { year: '2009', event: 'FIBSO Fiber Solutions founded' },
@@ -64,7 +39,7 @@ const About = () => {
   return (
     <>
     <ScrollToTop/>
-      <div className="min-h-screen py-8 bg-teal-100/45">
+      <div className="min-h-screen py-8 bg-gradient-to-r from-blue-300 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <section className="text-center mb-16">
@@ -115,84 +90,6 @@ const About = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">{value.title}</h3>
                 <p className="text-muted-foreground">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Company Story */}
-        <section className="mb-16">
-          <div className="bg-secondary/30 rounded-xl p-8 lg:p-12">
-            <h2 className="text-3xl font-bold text-foreground mb-6">Our Story</h2>
-            <div className="prose prose-lg max-w-none">
-              <p className="text-muted-foreground mb-6">
-                Founded in 2009 by industry veteran John Anderson, FIBSO Fiber Solutions began as a 
-                small startup with a big vision: to revolutionize how businesses connect and communicate 
-                through advanced fiber optic technology.
-              </p>
-              <p className="text-muted-foreground mb-6">
-                What started in a small garage has grown into a nationwide operation serving thousands 
-                of customers across various industries. Our journey has been marked by continuous innovation, 
-                strategic partnerships, and an unwavering commitment to customer satisfaction.
-              </p>
-              <p className="text-muted-foreground">
-                Today, FIBSO stands as a trusted partner for businesses seeking reliable, high-performance 
-                fiber optic solutions. We've built our reputation on technical excellence, superior service, 
-                and the ability to deliver complex projects on time and within budget.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Timeline */}
-        <section className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Our Journey</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Key milestones that have shaped FIBSO into the company it is today.
-            </p>
-          </div>
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-border"></div>
-            <div className="space-y-8">
-              {milestones.map((milestone, index) => (
-                <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                    <div className="bg-card rounded-lg p-4 shadow-lg">
-                      <div className="text-primary font-bold text-lg">{milestone.year}</div>
-                      <div className="text-muted-foreground">{milestone.event}</div>
-                    </div>
-                  </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Team */}
-        <section className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Meet Our Leadership Team</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Experienced professionals leading FIBSO toward a connected future.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="bg-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-smooth">
-                <div className="aspect-square bg-secondary/30">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-semibold text-foreground mb-1">{member.name}</h3>
-                  <div className="text-primary font-medium mb-3">{member.role}</div>
-                  <p className="text-muted-foreground text-sm">{member.bio}</p>
-                </div>
               </div>
             ))}
           </div>

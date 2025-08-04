@@ -8,7 +8,7 @@ const Footer = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="bg-orange-100 border-t border-border text-foreground relative overflow-hidden"
+      className="bg-gradient-to-t from-blue-600 via-blue-50 to-white border-t border-border text-foreground relative overflow-hidden"
     >
       {/* Optional background glow animation */}
       <motion.div
@@ -56,9 +56,9 @@ const Footer = () => {
           </motion.div>
 
           {/* Other Columns (Quick Links, Products, Contact) */}
-          {[['Quick Links', ['Home', 'Products', 'About Us', 'Why Choose Us', 'Contact']],
+          {([['Quick Links', ['Home', 'Products', 'About Us', 'Why Choose Us', 'Contact']],
             ['Products', ['Fiber Optic Cables', 'Network Equipment', 'Installation Services', 'Maintenance & Support']]
-          ].map(([title, items], idx) => (
+          ]as [string, string[]][]).map(([title, items], idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}

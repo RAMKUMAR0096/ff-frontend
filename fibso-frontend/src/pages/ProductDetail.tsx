@@ -13,10 +13,6 @@ const ProductDetail = () => {
   const product = {
     id: 1,
     name: 'Single-Mode Fiber Cable',
-    // price: 299.99,
-    // originalPrice: 349.99,
-    rating: 4.8,
-    reviews: 142,
     inStock: true,
     images: [
       '/api/placeholder/600/600',
@@ -122,35 +118,6 @@ const ProductDetail = () => {
           <div className="space-y-6">
             <div>
               <h1 className="text-3xl font-bold text-foreground mb-2">{product.name}</h1>
-              
-              {/* Rating */}
-              <div className="flex items-center mb-4">
-                <div className="flex items-center">
-                  {[...Array(5)].map((_, i) => (
-                    <Star 
-                      key={i} 
-                      className={`w-5 h-5 ${i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-muted-foreground'}`}
-                    />
-                  ))}
-                </div>
-                <span className="text-sm text-muted-foreground ml-2">
-                  {product.rating} ({product.reviews} reviews)
-                </span>
-              </div>
-
-              {/* Price */}
-              {/* <div className="flex items-center space-x-3 mb-4">
-                <span className="text-3xl font-bold text-primary">${product.price}</span>
-                {product.originalPrice && (
-                  <span className="text-xl text-muted-foreground line-through">${product.originalPrice}</span>
-                )}
-                {product.originalPrice && (
-                  <span className="bg-destructive text-destructive-foreground px-2 py-1 rounded text-sm font-semibold">
-                    Save ${(product.originalPrice - product.price).toFixed(2)}
-                  </span>
-                )}
-              </div> */}
-
               {/* Stock Status */}
               <div className="mb-6">
                 {product.inStock ? (
@@ -218,31 +185,6 @@ const ProductDetail = () => {
                 </button>
               </div>
             </div>
-
-            {/* Benefits */}
-            {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-border">
-              <div className="flex items-center space-x-3">
-                <Truck className="w-6 h-6 text-primary" />
-                <div>
-                  <div className="font-semibold text-sm">Free Shipping</div>
-                  <div className="text-xs text-muted-foreground">On orders over $500</div>
-                </div>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Shield className="w-6 h-6 text-primary" />
-                <div>
-                  <div className="font-semibold text-sm">2-Year Warranty</div>
-                  <div className="text-xs text-muted-foreground">Full coverage</div>
-                </div>
-              </div>
-              <div className="flex items-center space-x-3">
-                <RotateCcw className="w-6 h-6 text-primary" />
-                <div>
-                  <div className="font-semibold text-sm">30-Day Returns</div>
-                  <div className="text-xs text-muted-foreground">Easy returns</div>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
 

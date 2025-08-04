@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingCart, User } from 'lucide-react';
+import { FiFileText } from 'react-icons/fi';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ const Header = () => {
       const count = cart.reduce((sum: number, item: any) => sum + item.quantity, 0);
       setCartCount(count);
     };
-    
+
     updateCartCount();
     window.addEventListener('storage', updateCartCount);
     return () => window.removeEventListener('storage', updateCartCount);
@@ -49,11 +50,10 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-smooth ${
-                  isActive(item.href)
-                    ? 'text-primary bg-accent'
-                    : 'text-foreground hover:text-primary hover:bg-accent/50'
-                }`}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-smooth ${isActive(item.href)
+                    ? 'text-white bg-blue-400'
+                    : 'text-foreground hover:text-white hover:bg-blue-400'
+                  }`}
               >
                 {item.name}
               </Link>
@@ -62,30 +62,51 @@ const Header = () => {
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
+            {/* Search Bar */}
+            <div className="relative">
+              <input
+                type="search"
+                placeholder="Search..."
+                className="pl-10 pr-4 py-2 rounded-md border border-input bg-background text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-shadow"
+              />
+              <svg
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
+                />
+              </svg>
+            </div>
+
+            {/* Cart Icon */}
             <Link
               to="/cart"
               className="relative p-2 text-foreground hover:text-primary transition-smooth"
             >
-              <ShoppingCart className="w-6 h-6" />
+              <FiFileText className="w-6 h-6" />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center animate-fiber-pulse">
                   {cartCount}
                 </span>
               )}
             </Link>
+
+            {/* User Icon */}
             <Link
               to="/login"
               className="p-2 text-foreground hover:text-primary transition-smooth"
             >
               <User className="w-6 h-6" />
             </Link>
-            <Link
-              to="/contact"
-              className="btn-fiber"
-            >
-              Get Quote
-            </Link>
           </div>
+
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -106,11 +127,10 @@ const Header = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-smooth ${
-                    isActive(item.href)
-                      ? 'text-primary bg-accent'
-                      : 'text-foreground hover:text-primary hover:bg-accent/50'
-                  }`}
+                  className={`block px-3 py-2 rounded-md text-base font-medium transition-smooth ${isActive(item.href)
+                      ? 'text-white bg-blue-400'
+                      : 'text-black hover:text-white hover:bg-blue-100'
+                    }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
@@ -122,7 +142,7 @@ const Header = () => {
                   className="flex items-center space-x-2 text-foreground hover:text-primary transition-smooth"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <ShoppingCart className="w-5 h-5" />
+                  <FiFileText className="w-5 h-5" />
                   <span>Cart (0)</span>
                 </Link>
                 <Link
@@ -134,13 +154,6 @@ const Header = () => {
                   <span>Login</span>
                 </Link>
               </div>
-              <Link
-                to="/contact"
-                className="btn-fiber w-full text-center mt-4"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Get Quote
-              </Link>
             </div>
           </div>
         )}

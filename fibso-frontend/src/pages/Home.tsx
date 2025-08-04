@@ -18,13 +18,13 @@ const categories = [
     description: "High-speed fiber optic internet cables",
     color: "from-cyan-500 to-blue-500"
   },
-  {
-    name: "CCTV Cables",
-    icon: FiVideo,
-    slug: "cctv-cables", 
-    description: "Professional surveillance cable solutions",
-    color: "from-purple-500 to-pink-500"
-  },
+  // {
+  //   name: "CCTV Cables",
+  //   icon: FiVideo,
+  //   slug: "cctv-cables", 
+  //   description: "Professional surveillance cable solutions",
+  //   color: "from-purple-500 to-pink-500"
+  // },
   {
     name: "Networking Tools",
     icon: FiHardDrive,
@@ -39,13 +39,7 @@ const categories = [
     description: "Connectors, adapters, and accessories",
     color: "from-orange-500 to-red-500"
   },
-  {
-    name: "Routers & Switches", 
-    icon: FiMonitor,
-    slug: "routers-switches",
-    description: "Professional networking equipment",
-    color: "from-indigo-500 to-purple-500"
-  },
+ 
   {
     name: "Patch Cords",
     icon: FiLink,
@@ -139,16 +133,16 @@ const Home = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 text-center text-foreground px-4 max-w-4xl mx-auto"
+          className="absolute top-8 z-10 text-center text-foreground px-4 max-w-4xl mx-auto"
         >
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold mb-6 text-white"
+            className="top-40 text-5xl md:text-7xl font-bold mb-6 text-white"
           >
             FIBSO FIBER
-            <span className="block text-transparent bg-clip-text bg-gradient-rainbow animate-rainbow-flow">
+            <span className="block  bg-clip-text bg-gradient-rainbow animate-rainbow-flow">
               SOLUTIONS
             </span>
           </motion.h1>
@@ -156,7 +150,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl md:text-2xl mb-8 text-muted-foreground"
+            className="text-xl md:text-2xl mb-8 text-white "
           >
             Premium Fiber Optic Solutions for Modern Connectivity
           </motion.p>
@@ -164,12 +158,12 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col  sm:flex-row gap-4 justify-center relative top-20"
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className='mb-5'>
               <Link 
                 to="/products" 
-                className="btn-fiber text-lg px-8 py-4"
+                className="btn-fiber text-lg px-8 py-4 overflow-hidden"
               >
                 Explore Products
               </Link>
@@ -177,7 +171,7 @@ const Home = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link 
                 to="/contact" 
-                className="btn-fiber-outline text-lg px-8 py-4"
+                className="  bg-white text-lg px-8 py-4 text-primary rounded hover:text-white hover:bg-blue-400 font-medium sm:top-10 "
               >
                 Get Quote
               </Link>
@@ -187,7 +181,7 @@ const Home = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-20 bg-pink-100 from-background via-card to-secondary/10">
+      <section className="py-20  bg-gradient-to-r from-blue-300 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -209,7 +203,7 @@ const Home = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
           >
             {categories.map((category, index) => (
               <motion.div
@@ -232,7 +226,7 @@ const Home = () => {
                   <p className="text-muted-foreground group-hover:text-foreground transition-colors">
                     {category.description}
                   </p>
-                  <div className="mt-4 flex items-center text-primary group-hover:text-accent transition-colors">
+                  <div className="mt-4 flex items-center text-primary group-hover:text-primary transition-colors">
                     <span className="text-sm font-medium">Explore Products</span>
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -246,7 +240,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gradient-to-r from-secondary/20 to-primary/20">
+      <section className="py-20 bg-gradient-to-r from-blue-300 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -293,7 +287,7 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-br from-primary/30 to-accent/30">
+      <section className="py-16 bg-gradient-to-r from-blue-300 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             variants={containerVariants}
@@ -326,70 +320,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-l from-secondary/20 to-accent/20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              What Our Clients Say
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Trusted by businesses worldwide for reliable fiber solutions
-            </p>
-          </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {testimonials.map((testimonial, index) => (
-              <motion.div 
-                key={index}
-                variants={itemVariants}
-                whileHover={{ y: -10, rotateX: 5 }}
-                className="bg-card/60 backdrop-blur-lg p-8 rounded-xl border border-border hover:border-primary/50 transition-all duration-500 shadow-lg hover:shadow-2xl"
-              >
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="flex mb-4"
-                >
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ scale: 0, rotate: -180 }}
-                      whileInView={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: i * 0.1, type: "spring" }}
-                    >
-                      <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    </motion.div>
-                  ))}
-                </motion.div>
-                <p className="text-muted-foreground mb-6 italic leading-relaxed">
-                  "{testimonial.text}"
-                </p>
-                <div className="border-t border-border/50 pt-4">
-                  <div className="font-semibold text-foreground">{testimonial.name}</div>
-                  <div className="text-sm text-primary">{testimonial.company}</div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-green-100 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-blue-300 to-white relative overflow-hidden">
         <motion.div
           animate={{ 
             backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]

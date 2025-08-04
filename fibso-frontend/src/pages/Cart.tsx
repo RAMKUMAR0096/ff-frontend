@@ -7,7 +7,6 @@ import { toast } from 'sonner';
 interface CartItem {
   id: number;
   name: string;
-  price: number;
   quantity: number;
   image: string;
 }
@@ -57,14 +56,14 @@ const Cart = () => {
   };
 
 
-  const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const shipping = subtotal > 500 ? 0 : 50; // Free shipping over $500
-  const tax = subtotal * 0.08; // 8% tax
-  const total = subtotal + shipping + tax;
+  // const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  // const shipping = subtotal > 500 ? 0 : 50; // Free shipping over $500
+  // const tax = subtotal * 0.08; // 8% tax
+  // const total = subtotal + shipping + tax;
 
   if (cartItems.length === 0) {
     return (
-      <div className="min-h-screen py-8">
+      <div className="bg-gradient-to-r from-blue-300 to-white min-h-screen py-8">
         <ScrollToTop />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center py-16">
@@ -83,7 +82,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="bg-gradient-to-r from-blue-300 to-white min-h-screen py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -114,7 +113,7 @@ const Cart = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground">{item.name}</h3>
-                    <p className="text-2xl font-bold text-primary">${item.price}</p>
+                    {/* <p className="text-2xl font-bold text-primary">${item.price}</p> */}
                   </div>
                   <div className="flex items-center space-x-3">
                     <button
@@ -133,7 +132,7 @@ const Cart = () => {
                   </div>
                   <div className="text-right">
                     <div className="text-lg font-bold text-foreground">
-                      ${(item.price * item.quantity).toFixed(2)}
+                      {/* ${(item.price * item.quantity).toFixed(2)} */}
                     </div>
                     <button
                       onClick={() => removeItem(item.id)}
@@ -155,27 +154,27 @@ const Cart = () => {
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span className="font-medium">${subtotal.toFixed(2)}</span>
+                  {/* <span className="font-medium">${subtotal.toFixed(2)}</span> */}
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Shipping</span>
                   <span className="font-medium">
-                    {shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}
+                    {/* {shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`} */}
                   </span>
                 </div>
-                {shipping === 0 && (
+                {/* {shipping === 0 && (
                   <div className="text-sm text-green-600">
                     🎉 You qualify for free shipping!
-                  </div>
-                )}
+                  </div> */}
+                {/* )} */}
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Tax</span>
-                  <span className="font-medium">${tax.toFixed(2)}</span>
+                  {/* <span className="font-medium">${tax.toFixed(2)}</span> */}
                 </div>
                 <div className="border-t border-border pt-3">
                   <div className="flex justify-between text-lg font-bold">
                     <span>Total</span>
-                    <span className="text-primary">${total.toFixed(2)}</span>
+                    {/* <span className="text-primary">${total.toFixed(2)}</span> */}
                   </div>
                 </div>
               </div>
@@ -188,29 +187,6 @@ const Cart = () => {
                 <Link to="/products" className="text-primary hover:text-primary/80 text-sm transition-smooth">
                   Continue Shopping
                 </Link>
-              </div>
-
-              {/* Benefits */}
-              <div className="mt-6 pt-6 border-t border-border">
-                <h3 className="font-semibold text-foreground mb-3">Order Benefits</h3>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-center text-muted-foreground">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                    Free shipping on orders over $500
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                    30-day return policy
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                    2-year warranty included
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                    Expert installation available
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
@@ -230,7 +206,7 @@ const Cart = () => {
                 to={`/product/${product.id}`}
                 className="bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-smooth group"
               >
-                <div className="aspect-square bg-secondary/30">
+                <div className="aspect-square bg-blue-900">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -239,7 +215,7 @@ const Cart = () => {
                 </div>
                 <div className="p-4">
                   <h3 className="font-semibold text-foreground mb-2">{product.name}</h3>
-                  <span className="text-xl font-bold text-primary">${product.price}</span>
+                  {/* <span className="text-xl font-bold text-primary">${product.price}</span> */}
                 </div>
               </Link>
             ))}

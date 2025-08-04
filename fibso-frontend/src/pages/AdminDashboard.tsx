@@ -94,15 +94,6 @@ const AdminDashboard = () => {
     setShowUploadForm(false); // Hide form after upload
   };
 
-  // Sample Data
-  const salesData = [
-    { month: 'Jan', sales: 12000, orders: 120 },
-    { month: 'Feb', sales: 19000, orders: 190 },
-    { month: 'Mar', sales: 15000, orders: 150 },
-    { month: 'Apr', sales: 25000, orders: 250 },
-    { month: 'May', sales: 22000, orders: 220 },
-    { month: 'Jun', sales: 30000, orders: 300 }
-  ];
 
   const productCategories = [
     { name: 'Ethernet Cables', value: 35, color: '#3B82F6' },
@@ -117,11 +108,6 @@ const AdminDashboard = () => {
     { id: 3, customer: 'Network Systems Inc', product: 'Networking Tool Kit', amount: '$850', status: 'rejected', date: '2024-01-13' }
   ];
 
-  // const customerResponses = [
-  //   { id: 1, customer: 'John Smith', message: 'Great service! Quick delivery.', rating: 5, date: '2024-01-15' },
-  //   { id: 2, customer: 'Sarah Johnson', message: 'Product quality exceeded expectations.', rating: 5, date: '2024-01-14' },
-  //   { id: 3, customer: 'Mike Wilson', message: 'Had issues with installation guide.', rating: 3, date: '2024-01-13' }
-  // ];
 
   if (!isAuthenticated) {
     return (
@@ -178,7 +164,7 @@ const AdminDashboard = () => {
             </motion.button>
           </form>
 
-          <div className="mt-6 p-4 bg-muted rounded-lg">
+          <div className="mt-6 p-4 bg-slate-100 rounded-lg">
             <p className="text-sm text-muted-foreground text-center">
               Demo credentials:<br />
               Username: <strong>admin</strong><br />
@@ -208,7 +194,7 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted to-card">
+    <div className="min-h-screen bg-gradient-to-r from-BLUE-300 via-muted to-white">
       <div className="flex">
         {/* Sidebar */}
         <motion.div
@@ -229,7 +215,7 @@ const AdminDashboard = () => {
                 onClick={() => setActiveSection(item.id)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${activeSection === item.id
                   ? 'bg-primary text-primary-foreground'
-                  : 'hover:bg-muted text-foreground'
+                  : 'hover:bg-blue-100 text-foreground'
                   }`}
               >
                 <item.icon className="text-lg" />

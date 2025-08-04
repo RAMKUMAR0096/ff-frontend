@@ -64,7 +64,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen py-8 bg bg-gradient-to-r from-sky-300 via-emerald-200 to-violet-300 p-6 rounded-lg text-slate-900 shadow-md">
+    <div className="min-h-screen py-8 bg bg-gradient-to-t from-blue-300 via-blue-200 to-blue-200 p-6 rounded-lg text-slate-900 shadow-md">
       <ScrollToTop/>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -140,7 +140,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+91 12345-45678"
                   />
                 </div>
                 <div>
@@ -229,41 +229,26 @@ const Contact = () => {
               <div className="space-y-4">
                 <a
                   href="/products"
-                  className="block w-full text-left p-4 border border-border rounded-lg hover:bg-accent/50 transition-smooth"
+                  className="block w-full text-left p-4 border border-border rounded-lg hover:bg-blue-100 transition-smooth"
                 >
                   <div className="font-medium text-foreground">Browse Products</div>
                   <div className="text-sm text-muted-foreground">Explore our fiber optic solutions</div>
                 </a>
                 <a
                   href="/why-choose-us"
-                  className="block w-full text-left p-4 border border-border rounded-lg hover:bg-accent/50 transition-smooth"
+                  className="block w-full text-left p-4 border border-border rounded-lg hover:bg-blue-100 transition-smooth"
                 >
                   <div className="font-medium text-foreground">Why Choose FIBSO?</div>
                   <div className="text-sm text-muted-foreground">Learn about our advantages</div>
                 </a>
                 <a
                   href="/about"
-                  className="block w-full text-left p-4 border border-border rounded-lg hover:bg-accent/50 transition-smooth"
+                  className="block w-full text-left p-4 border border-border rounded-lg hover:bg-blue-100 transition-smooth"
                 >
                   <div className="font-medium text-foreground">About Us</div>
                   <div className="text-sm text-muted-foreground">Our story and team</div>
                 </a>
               </div>
-            </div>
-
-            {/* Emergency Contact */}
-            <div className="bg-destructive/10 border border-destructive/20 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-destructive mb-2">Emergency Support</h3>
-              <p className="text-sm text-muted-foreground mb-3">
-                For urgent technical issues outside business hours
-              </p>
-              <a
-                href="tel:+15551234567"
-                className="inline-flex items-center text-destructive font-medium hover:text-destructive/80"
-              >
-                <Phone className="w-4 h-4 mr-2" />
-                +1 (555) 123-4567
-              </a>
             </div>
           </div>
         </div>

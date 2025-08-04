@@ -142,7 +142,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-8 bg-gradient-to-r from-blue-300 to-white">
       <ScrollToTop/>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
@@ -158,7 +158,7 @@ const WhyChooseUs = () => {
 
         {/* Stats Section */}
         <section className="mb-16">
-          <div className="bg-blue-200 rounded-xl p-8">
+          <div className="bg-blue-300 rounded-xl p-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
@@ -213,7 +213,7 @@ const WhyChooseUs = () => {
           <div className="bg-card rounded-xl shadow-lg overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-secondary/50">
+                <thead className="bg-blue-400">
                   <tr>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Feature</th>
                     <th className="px-6 py-4 text-center text-sm font-semibold text-primary">FIBSO</th>
@@ -241,33 +241,6 @@ const WhyChooseUs = () => {
                 </tbody>
               </table>
             </div>
-          </div>
-        </section>
-
-        {/* Customer Testimonials */}
-        <section className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">What Our Customers Say</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Real feedback from businesses that have chosen FIBSO for their fiber optic needs.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-card rounded-xl p-6 shadow-lg">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-yellow-400 text-lg">★</span>
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-4 italic">"{testimonial.quote}"</p>
-                <div className="border-t border-border pt-4">
-                  <div className="font-semibold text-foreground">{testimonial.name}</div>
-                  <div className="text-sm text-primary">{testimonial.role}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.company}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
 

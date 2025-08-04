@@ -30,8 +30,8 @@ const Products = () => {
       name: 'Single-Mode Fiber Cable',
       category: 'cables',
       // price: 299.99,
-      rating: 4.8,
-      reviews: 142,
+      // rating: 4.8,
+      // reviews: 142,
       image: heroImage,
       description: 'High-quality single-mode fiber optic cable for long-distance transmission.'
     },
@@ -94,7 +94,7 @@ const Products = () => {
   });
 
   return (
-    <div className="min-h-screen py-8 bg-teal-50">
+    <div className="min-h-screen py-8 bg-gradient-to-r from-blue-300 to-white">
       <ScrollToTop/>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -106,7 +106,7 @@ const Products = () => {
         </div>
 
         {/* Search and Filter */}
-        <div className="bg-teal-100 rounded-lg p-6 shadow-lg mb-8">
+        <div className="transparent rounded-lg p-6 shadow-sm mb-8">
           <div className="flex flex-col md:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">
@@ -158,20 +158,6 @@ const Products = () => {
                 <h3 className="text-xl font-semibold text-foreground mb-2">{product.name}</h3>
                 <p className="text-muted-foreground text-sm mb-3">{product.description}</p>
                 
-                {/* Rating */}
-                <div className="flex items-center mb-3">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-muted-foreground'}`}
-                      />
-                    ))}
-                  </div>
-                  <span className="text-sm text-muted-foreground ml-2">
-                    {product.rating} ({product.reviews} reviews)
-                  </span>
-                </div>
 
                 {/* Price and Action */}
                 <div className="flex items-center justify-between">

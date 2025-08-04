@@ -27,7 +27,7 @@
 
     /* Muted: Modern Slate - Subtle elements */
     --muted: 215 28% 17%;                 /* Dark slate #1e293b */
-    --muted-foreground: 215 20% 65%;      /* Light gray for secondary text */
+    --muted-foreground: 0 0 0 0;      /* Light gray for secondary text */
 
     /* Accent: Modern Indigo - Warm highlights */
     --accent: 239 84% 67%;                /* Indigo #6366f1 */
@@ -129,7 +129,7 @@
 @layer components {
   /* Vibrant Fiber Optic Button Variants */
   .btn-fiber {
-    @apply bg-gradient-to-r from-primary via-accent to-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold;
+    @apply bg-blue-400 px-6 py-3 rounded-lg font-semibold text-white;
     @apply shadow-lg hover:shadow-xl;
     @apply transition-all duration-300;
     @apply hover:scale-105 hover:shadow-[var(--glow-primary)] relative overflow-hidden;
